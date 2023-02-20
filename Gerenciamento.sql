@@ -2,13 +2,13 @@
 
 -- 2) Abra o Painel de Controle, acesse Ferramentas Administrativas e abra o Gerenciamento do computador.
 
--- 3) Em Usuários e Grupos Locais, clique em Grupos e dê um duplo clique em ORA_DBA.
+-- 3) Em Usuï¿½rios e Grupos Locais, clique em Grupos e dï¿½ um duplo clique em ORA_DBA.
 
--- 4) Novamente no Painel de Controle, clique em Sistema e em Configurações avançadas do sistema. Em seguida, clique no botão Variáveis de Ambiente.
+-- 4) Novamente no Painel de Controle, clique em Sistema e em Configuraï¿½ï¿½es avanï¿½adas do sistema. Em seguida, clique no botï¿½o Variï¿½veis de Ambiente.
 
--- 5) Selecione a variável Path, clique em Editar e copie o caminho do Oracle: C:\app\oracle\19c\bin.
+-- 5) Selecione a variï¿½vel Path, clique em Editar e copie o caminho do Oracle: C:\app\oracle\19c\bin.
 
--- 6) Clique em Novo e crie as três variáveis de ambiente ORACLE_BASE (valor C:\app\oracle), ORACLE_HOME (valor C:\app\oracle\19c) e ORACLE_SDI (valor orcl1).
+-- 6) Clique em Novo e crie as trï¿½s variï¿½veis de ambiente ORACLE_BASE (valor C:\app\oracle), ORACLE_HOME (valor C:\app\oracle\19c) e ORACLE_SDI (valor orcl1).
 
 -- 7) Execute o Prompt de Comando como administrador e execute: sqlplus /NOLOG
  
@@ -24,57 +24,59 @@ show user
 
 exit
 
--- 11) Outra maneira de entrar no ambiente Oracle é abrir o navegador e acessar: https://:5500/em.
+-- 11) Outra maneira de entrar no ambiente Oracle ï¿½ abrir o navegador e acessar: https://:5500/em.
 
--- 12) Digite o usuário SYS e a sua senha.
+-- 12) Digite o usuï¿½rio SYS e a sua senha.
 
--- 13) Será carregado o ambiente do banco de dados. Aqui, você poderá ver como funciona o Enterprise Manager.
+-- 13) Serï¿½ carregado o ambiente do banco de dados. Aqui, vocï¿½ poderï¿½ ver como funciona o Enterprise Manager.
 
--- 14) Há mais um forma de entrar no banco de dados, usando o Oracle SQL Developer.
+-- 14) Hï¿½ mais um forma de entrar no banco de dados, usando o Oracle SQL Developer.
 
--- 15) Agora, pratique um pouco sobre a carga dos parâmetros. Para isso, execute o Prompt de Comando como administrador e entre novamente no sqlplus: sqlplus /nolog
+-- 15) Agora, pratique um pouco sobre a carga dos parï¿½metros. Para isso, execute o Prompt de Comando como administrador e entre novamente no sqlplus: sqlplus /nolog
 
--- 16) Conecte com o privilégio de sysdba:
+-- 16) Conecte com o privilï¿½gio de sysdba:
 connect / as sysdba
 
---  17) Veja os parâmetros válidos no momento:
+--  17) Veja os parï¿½metros vï¿½lidos no momento:
 select name, value from v$parameter where isbasic = 'True' order by name;
 
--- 18) Procure por dois parâmetros: processes e sessions.
+-- 18) Procure por dois parï¿½metros: processes e sessions.
 
--- 19) Melhore a consulta, listando apenas esses dois parâmetros:
+-- 19) Melhore a consulta, listando apenas esses dois parï¿½metros:
 
 select name, value from v$parameter where isbasic = 'True' and (name = 'processes' or name = 'sessions') order by name;
 
 -- 20) Altere o processes de 640 para 200:
 alter system set processes = 200 scope=SPFILE;
 
--- 21) Verifique novamente o valor dos parâmetros e veja que ele não mudou, isso porque a alteração foi feita no SPFILE.
+-- 21) Verifique novamente o valor dos parï¿½metros e veja que ele nï¿½o mudou, isso porque a alteraï¿½ï¿½o foi feita no SPFILE.
 
 -- 22) Verifique o processes e o sessions na tabela v$spparameter:
 select name, value from v$spparameter where (name = 'processes' or name = 'sessions') order by name;
 
--- 23) Aqui o parâmetro já foi alterado.
+-- 23) Aqui o parï¿½metro jï¿½ foi alterado.
 
--- 24) Para que a mudança reflita nas duas, pare e suba a instância. Para isso, faça:
+-- 24) Para que a mudanï¿½a reflita nas duas, pare e suba a instï¿½ncia. Para isso, faï¿½a:
 startup force
 
--- 25) Agora, verifique o valor do parâmetro nls_language:
+-- 25) Agora, verifique o valor do parï¿½metro nls_language:
 select name, value from v$parameter where isbasic = 'True' and (name = 'nls_language') order by name;
 
--- 26) Mude a língua para francês:
+-- 26) Mude a lï¿½ngua para francï¿½s:
 alter session set nls_language = 'FRENCH'
 
--- 27) Observe que o parâmetro mudou, rodando novamente a consulta da v$parameter .
+-- 27) Observe que o parï¿½metro mudou, rodando novamente a consulta da v$parameter .
 
 -- 28) Pare e suba o banco de novo:
 startup force
 
--- 29) Voltando a observar o parâmetro na tabela v$parameter, você verá que a língua voltou para o português brasileiro.
+-- 29) Voltando a observar o parï¿½metro na tabela v$parameter, vocï¿½ verï¿½ que a lï¿½ngua voltou para o portuguï¿½s brasileiro.
 
--- 30) Agora, verifique o valor do parâmetro optimizer_mode:
+-- 30) Agora, verifique o valor do parï¿½metro optimizer_mode:
 select name, value from v$parameter where (name = 'optimizer_mode') order by name;
 
--- 31) Execute a alteração:
+-- 31) Execute a alteraï¿½ï¿½o:
 
-alter system set optimizer_mode=ALL_ROWS scope=BOTH;
+alter system set optimizer_mode=ALL_ROWS scope=BOTH; 
+
+-- teste
