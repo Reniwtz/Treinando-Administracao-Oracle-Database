@@ -1,4 +1,5 @@
 # Treinando-Administracao-Oracle-Database
 
-Este Repositório tem a finalidade de guardar conhecimento adiquiridos por mim durante o curso deadministração
-de banco de dados oracle e de pesquisa posteriores que eu venha a fazer nos meus estudos.
+Este Repositório tem a finalidade de guardar conhecimento adiquiridos por mim durante o curso de administração
+de banco de dados oracle e de posteriores estudos feitos por mim, Espero que sirva de ajuda para quem estar co-
+meçanco a tirar duvidas a respeito de algo.
